@@ -6,7 +6,7 @@ let urls = {
   'https://optimizer-demo-beta.ampdev.workers.dev/ecommerce/templates/landing.amp.html':
     'CF Optimized',
 };
-const runs = 1;
+const runs = 10;
 
 async function run() {
   const scores = await PerfLeaderboard(Object.keys(urls), runs);

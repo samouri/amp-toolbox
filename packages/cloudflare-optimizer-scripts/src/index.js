@@ -59,11 +59,13 @@ async function handleRequest(event, config) {
   if (config.enableKVCache) {
     const cached = await KV.get(request.url);
     if (cached) {
+      console.log('Serving via cache: ' + request.url);
       // TODO: can we do something faster than JSON.parse?
       const {status, statusText, headers, text} = JSON.parse(cached);
       return new Response(text, {status, statusText, headers});
     }
   }
+  console.log('Serving SLOW: ' + request.url);
 
   const response = await fetch(url.toString(), {
     cf: {minify: {html: true}},
