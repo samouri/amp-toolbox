@@ -15,6 +15,8 @@
   "author": "AMPHTML Team",
   "license": "Apache-2.0",
   "dependencies": {
-    "@ampproject/toolbox-optimizer": "2.8.0-canary.16"
+    "@ampproject/toolbox-optimizer": "2.8.0-canary.16",
+    "jimp": "0.16.1",
+    "probe-image-size": "7.0.1"
   }
 }

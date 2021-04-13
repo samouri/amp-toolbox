@@ -239,7 +239,6 @@ function getOptimizer(config) {
           minify: {html: true},
         },
       }),
-    transformations: AmpOptimizer.TRANSFORMATIONS_MINIMAL,
     imageOptimizer: config.enableCloudflareImageOptimization ? imageOptimizer : undefined,
   });
 }

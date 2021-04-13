@@ -11,11 +11,5 @@ module.exports = {
   },
   mode: 'production',
   devtool: 'none',
-  externals: {
-    'jimp': 'jimp',
-    'probe-image-size': 'probe-image-size',
-    'cssnano-simple': 'cssnano-simple',
-    'postcss': 'postcss',
-    'postcss-safe-parser': 'postcss-safe-parser',
-  },
+  externals: {},
 };
