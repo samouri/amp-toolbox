@@ -40,9 +40,9 @@ const DEFAULT_TTL = 60 * 15;
  */
 async function handleEvent(event, config) {
   event.passThroughOnException();
-  const createErrorResponse = (e) => new Response(`Error thrown: ${e.message}`, {status: 500});
 
   try {
+    validateConfiguration(config);
     const response = handleRequest(event, config);
     event.respondWith(response);
   } catch (e) {
@@ -51,7 +51,7 @@ async function handleEvent(event, config) {
     }
     // Passthrough cannot work in rev proxy mode, so force a response.
     if (isReverseProxy(config)) {
-      event.respondWith(createErrorResponse(e));
+      event.respondWith(new Response(`Error thrown: ${e.message}`, {status: 500}));
     }
   }
 }
@@ -62,8 +62,6 @@ async function handleEvent(event, config) {
  * @return {!Request}
  */
 async function handleRequest(event, config) {
-  validateConfiguration(config);
-
   const request = event.request;
   const url = new URL(request.url);
   if (isReverseProxy(config)) {
